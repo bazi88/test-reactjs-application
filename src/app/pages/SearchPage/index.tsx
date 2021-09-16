@@ -12,6 +12,7 @@ import { useSearchSliceSlice } from './slice';
 import { selectSearchSlice } from './slice/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table } from 'antd';
+import history from 'utils/history';
 
 const { Search } = Input;
 
@@ -28,8 +29,16 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    render: (text, record, index)=> {
-      return <AHref href={'/home/' + record.id + '/accounts'}>{text}</AHref>;
+    render: (text, record, index) => {
+      return (
+        <AHref
+          onClick={() => {
+            history.push('/home/' + record.id + '/accounts');
+          }}
+        >
+          {text}
+        </AHref>
+      );
     },
   },
   {
@@ -74,4 +83,4 @@ const DivMt = styled.div`
 `;
 const AHref = styled.a`
   color: blue;
-`
+`;
