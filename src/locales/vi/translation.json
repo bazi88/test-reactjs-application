@@ -1,0 +1,19 @@
+{
+  "home": {
+    "description": "Chào mừng"
+  },
+  "navbar": {
+    "signOut": "Thoát tài khoản",
+    "setting": "Cài đặt"
+  },
+  "languageSwitch": {
+    "changeLanguage": "Thay đổi ngôn ngữ",
+    "English": "Tiếng Anh",
+    "VietNam": "Tiếng Việt"
+  },
+  "theme": {
+    "changeTheme": "Chủ đề",
+    "darkTheme": "Chủ đề tối",
+    "lightTheme": "Chủ đề sáng"
+  }
+}

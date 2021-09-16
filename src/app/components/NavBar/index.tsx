@@ -1,43 +1,46 @@
-import * as React from 'react';
+/**
+ *
+ * Navbar
+ *
+ */
+import React, { memo } from 'react';
 import styled from 'styled-components/macro';
-import { Logo } from './Logo';
-import { StyleConstants } from 'styles/StyleConstants';
-import { Nav } from './Nav';
-import { PageWrapper } from '../PageWrapper';
+import { useTranslation } from 'react-i18next';
+import { messages } from './messages';
+import Nav from './Nav';
+import Logo from './Logo';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
-export function NavBar() {
+interface Props {}
+
+export const Navbar = memo((props: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { t, i18n } = useTranslation();
+
   return (
-    <Wrapper>
-      <PageWrapper>
-        <Logo />
-        <Nav />
-      </PageWrapper>
-    </Wrapper>
+    <WrapNavBar>
+      <Grid fluid>
+        <Row>
+          <Col xs={12} md={2}>
+            <Logo />
+          </Col>
+          <Col xs={12} md={10}>
+            <Nav />
+          </Col>
+          {t('')}
+          {/*  {t(...messages.someThing())}  */}
+        </Row>
+      </Grid>
+    </WrapNavBar>
   );
-}
+});
 
-const Wrapper = styled.header`
-  box-shadow: 0 1px 0 0 ${p => p.theme.borderLight};
-  height: ${StyleConstants.NAV_BAR_HEIGHT};
-  display: flex;
-  position: fixed;
-  top: 0;
+const WrapNavBar = styled.div`
   width: 100%;
-  background-color: ${p => p.theme.background};
-  z-index: 2;
-
-  @supports (backdrop-filter: blur(10px)) {
-    backdrop-filter: blur(10px);
-    background-color: ${p =>
-      p.theme.background.replace(
-        /rgba?(\(\s*\d+\s*,\s*\d+\s*,\s*\d+)(?:\s*,.+?)?\)/,
-        'rgba$1,0.75)',
-      )};
-  }
-
-  ${PageWrapper} {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background-color: ${props => props.theme.lightTheme};
+  height: 75px;
+  .container-fluid {
+    line-height: 75px;
+    height: 100%;
   }
 `;

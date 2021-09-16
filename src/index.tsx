@@ -15,7 +15,9 @@ import FontFaceObserver from 'fontfaceobserver';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
+import 'antd/dist/antd.css';
 
+// Import root app
 import { App } from 'app';
 
 import { HelmetProvider } from 'react-helmet-async';
@@ -23,12 +25,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { configureAppStore } from 'store/configureStore';
 
 import { ThemeProvider } from 'styles/theme/ThemeProvider';
-
 import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
 import './locales/i18n';
-
 // Observe loading of Inter (to remove 'Inter', remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Inter', {});

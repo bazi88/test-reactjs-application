@@ -1,57 +1,53 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
+import SearchBox from './SearchBox';
+import Profile from './Profile';
+import LanguageSwitch from './LanguageSwitch';
+import ThemeSwicth from './ThemeSwicth';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
-export function Nav() {
+export default function Nav() {
   return (
-    <Wrapper>
-      <Item
-        href="https://cansahin.gitbook.io/react-boilerplate-cra-template/"
-        target="_blank"
-        title="Documentation Page"
-        rel="noopener noreferrer"
-      >
-        <DocumentationIcon />
-        Documentation
-      </Item>
-      <Item
-        href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
-        target="_blank"
-        title="Github Page"
-        rel="noopener noreferrer"
-      >
-        <GithubIcon />
-        Github
-      </Item>
-    </Wrapper>
+    <Row>
+      <Col md={4}>
+        <WarpperSearchBox>
+          <SearchBox />
+        </WarpperSearchBox>
+      </Col>
+      <Col md={8}>
+        <BoxProfile>
+          <WrapperPadding>
+            <Profile />
+          </WrapperPadding>
+          <WrapperPadding>
+            <LanguageSwitch />
+          </WrapperPadding>
+          <WrapperPadding>
+            <ThemeSwicth />
+          </WrapperPadding>
+        </BoxProfile>
+      </Col>
+    </Row>
   );
 }
 
-const Wrapper = styled.nav`
-  display: flex;
-  margin-right: -1rem;
+const BoxProfile = styled.div`
+  text-align: right;
+  div {
+    display: inline-block;
+  }
 `;
 
-const Item = styled.a`
-  color: ${p => p.theme.primary};
-  cursor: pointer;
-  text-decoration: none;
+const WrapperPadding = styled.div`
+  padding: 0px 10px;
+  .ant-avatar {
+    margin: 0px 4px;
+  }
+`;
+
+const WarpperSearchBox = styled.div`
   display: flex;
-  padding: 0.25rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  align-items: center;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.4;
-  }
-
-  .icon {
-    margin-right: 0.25rem;
-  }
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
 `;

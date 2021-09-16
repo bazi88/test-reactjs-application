@@ -1,25 +1,21 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavBar } from 'app/components/NavBar';
-import { Masthead } from './Masthead';
-import { Features } from './Features';
-import { PageWrapper } from 'app/components/PageWrapper';
+import { useTranslation } from 'react-i18next';
+import { messages } from './messages';
+import { Navbar } from 'app/components/Navbar';
+import { LayoutComponent } from '../../components/Layout';
 
 export function HomePage() {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
         <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React Boilerplate application homepage"
-        />
+        <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <NavBar />
-      <PageWrapper>
-        <Masthead />
-        <Features />
-      </PageWrapper>
+      {/* <span>{t(messages.routingDescription())}</span> */}
+      {/* <Navbar></Navbar> */}
+      <LayoutComponent />
     </>
   );
 }
